@@ -9,6 +9,7 @@ kildetekst <- paste(kildetekst, sep = " ", collapse = " ")
 # Spør etter tekst som skal sjekkes mot kildetekst
 inputtekst <- readline("Skriv søketekst: ")
 
+#Sjekker at søketeksten ikke er tom. I så fall, prøv på nytt.
 if (inputtekst=="") source('tekst.R') 
 
 # Hvor lange er kildetekst og inputtekst?
