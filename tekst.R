@@ -1,12 +1,14 @@
 ## Skript for å lete gjennom tekst og finne match
 
 # To teksteksempler
-tekst <- "Jeg heter Christian og jobber i Bergens Tidende."
+tekst <- scan(file = "text.txt", what = 'character')
 tekst2 <- readline("Skriv tekst, minst to bokstaver: ")
 
-
+# Få tekst inn i én streng.
+tekst <- paste(tekst, sep = " ", collapse = " ")
 #Splitte strengen i sine minste bestanddeler. Sett den sammen igjen
 #bokstav for bokstav og legg alt i en liste.
+
 atom <- unlist(strsplit(tekst, ""))
 biter <- list()
 lengde <- length(atom)
