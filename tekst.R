@@ -1,8 +1,7 @@
 ## Skript for å lete gjennom tekst og finne match
 
 # Hent inn kildetekst fra filen text.txt
-tekst <- scan(file = "text.txt", what = 'character')
-kildetekst <- tekst
+kildetekst <- scan(file = "text.txt", what = 'character')
 
 # Få kildeteksten inn i én streng.
 kildetekst <- paste(kildetekst, sep = " ", collapse = " ")
