@@ -26,15 +26,12 @@ input_vs_kilde <- round(100 * lengde_inputtekst / lengde_kildetekst, digits=2)
 ord <- list()
     sjekk <- function(x) {
         diff <- lengde_kildetekst-x+1
+        atom <- unlist(strsplit(kildetekst, ""))
         for (i in 1:diff) {
             ord <- c(ord, paste(atom[i:(i+(x-1))], collapse=""))
                 }
                 return(ord)
         }
-   
-#Finnes teksten vi leter etter i listen biter?
-#Tell opp alle forekomster der hele inputtekst er i listen.
-res <- grepl(inputtekst, kildetekst)
 
 #Ordanalyse: Sjekk hvor mange ganger strengen dukker opp i kildeteksten
 #Regn ut omfanget søkestrengen har i teksten: Prosent av lengde på kildetekst * antall treff.
@@ -43,14 +40,13 @@ treff <- length(which(ordliste == inputtekst))
 omfang <- input_vs_kilde * treff
 
 #Tekster til rapport
-ja <- 'Teksten du søker etter, finnes i kildeteksten.\n'
 nei <- 'Teksten du søker etter, finnes ikke i kildeteksten.\n\n'
 svar1 <- paste(dQuote(inputtekst),'utgjør',omfang,'% av kildeteksten.\n', collapse="")
 svar2 <- paste('Søketeksten finnes', treff, 'steder i kildeteksten.\n\n', collapse="")
 
 #Sjekk om inputtekst faktisk er i kildetekst.
-#Hvis res=TRUE, finnes inputteksten i kildeteksten.
+#Hvis treff>0, finnes inputteksten i kildeteksten.
 
-if (res==TRUE) paste(cat(ja,svar1,svar2)) else cat(nei)
+if (treff > 0) paste(cat(svar1,svar2)) else cat(nei)
 
 source('tekst.R')
