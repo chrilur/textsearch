@@ -22,8 +22,9 @@ input_vs_kilde <- round(100 * lengde_inputtekst / lengde_kildetekst, digits=2)
 #Funksjon for ordanalyse.
 #Lag en liste av kildetekst der første element er fra første bokstav til lengde_inputtekst.
 #Gå deretter gjennom kildetekst ved å flytte en plass mot høyre i hver loop.
-ord <- list()
-    sjekk <- function(x) {
+
+    sjekktekst <- function(x) {
+        ord <- list()
         diff <- lengde_kildetekst-x+1
         atom <- unlist(strsplit(kildetekst, ""))
         for (i in 1:diff) {
@@ -34,7 +35,7 @@ ord <- list()
 
 #Ordanalyse: Sjekk hvor mange ganger strengen dukker opp i kildeteksten
 #Regn ut omfanget søkestrengen har i teksten: Prosent av lengde på kildetekst * antall treff.
-ordliste <- sjekk(lengde_inputtekst)
+ordliste <- sjekktekst(lengde_inputtekst)
 treff <- length(which(ordliste == inputtekst))
 omfang <- input_vs_kilde * treff
 
